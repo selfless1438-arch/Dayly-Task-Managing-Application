@@ -2,6 +2,25 @@
 include "db.php";
 session_start();
 
+// Auto Login using cookie
+if (!isset($_SESSION['loggedin']) && isset($_COOKIE['username'])) {
+
+    $username = $_COOKIE['username'];
+
+    $sql = $conn->prepare("SELECT * FROM users WHERE username = ?");
+    $sql->bind_param("s", $username);
+    $sql->execute();
+
+    $result = $sql->get_result();
+
+    if ($result->num_rows > 0) {
+        $_SESSION['loggedin'] = true;
+        $_SESSION['username'] = $username;
+    }
+}
+
+
+// Redirect if not logged in
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: login.php");
     exit;

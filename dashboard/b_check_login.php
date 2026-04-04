@@ -1,6 +1,7 @@
 <?php
 include "db.php";
 header("Content-Type: application/json");
+session_start();
 
 $username = $_POST["username"];
 $password = $_POST["password"];
@@ -14,11 +15,12 @@ $result = $sql->get_result();
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     if (password_verify($password, $row['password'])) {
-        session_start();
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
         if (isset($_POST["checkbox"])) {
             setcookie("username", $username, time() + (86400 * 30), "/");
+        } else {
+            setcookie("username", "", time() - 3600, "/");
         }
         echo json_encode(["success" => true, "message" => "Verifeid"]);
         exit;
