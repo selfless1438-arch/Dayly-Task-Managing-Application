@@ -43,6 +43,7 @@ $fullname = $row['fullname'];
     <title>Dashboard | Dayly - Task Manager</title>
     <link rel="stylesheet" href="../root.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modals.css">
     <?php
     include "../links.php";
     ?>
@@ -184,8 +185,12 @@ $fullname = $row['fullname'];
             </li>
         </ul>
     </footer>
-    <script src="script.js"></script>
+    <!-- Modals -->
+    <?php include "modals.php" ?>
+
     <script src="root.js"></script>
+    <script src="script.js"></script>
+    <script src="modals.js"></script>
 </body>
 
 </html>
