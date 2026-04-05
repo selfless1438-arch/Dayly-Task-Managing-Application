@@ -28,18 +28,19 @@
     animation: 0.7s popup ease;
     scale: 1;
 
-    @keyframes popup {
-        0% {
-            scale: 0;
-        }
+}
 
-        80% {
-            scale: 1.1;
-        }
+@keyframes popup {
+    0% {
+        scale: 0;
+    }
 
-        100% {
-            scale: 1;
-        }
+    80% {
+        scale: 1.1;
+    }
+
+    100% {
+        scale: 1;
     }
 }
 
@@ -65,6 +66,7 @@
     background-color: transparent;
     border: none;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .modal .modal-dialogue .modal-body {
@@ -90,4 +92,20 @@
     border-radius: 5px;
     font-size: 18px;
     font-family: var(--font-text);
+}
+
+.modal .modal-dialogue .modal-body .input-cont input.alert {
+    border-color: red;
+    outline: none;
+}
+
+.modal .modal-dialogue .modal-body form button {
+    background-color: rgb(37, 37, 250);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
 }

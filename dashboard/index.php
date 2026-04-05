@@ -86,7 +86,7 @@ $fullname = $row['fullname'];
                 <div class="tasks-cont">
                     <div class="header">
                         <span class="title">Tasks</span>
-                        <button type="button" onclick="">
+                        <button type="button" onclick="openModal('addNewTask')">
                             <i data-lucide="plus"></i>
                         </button>
                     </div>

@@ -1,13 +1,14 @@
-<div class="modal show" id="addNewTask">
+<div class="modal" id="addNewTask">
     <div class="modal-dialogue">
         <div class="modal-header">
             <span class="title">Add New Task</span>
-            <button type="button" onclick="closeModal('addNewModal')">
+            <button type="button" onclick="closeModal('addNewTask')">
                 <i data-lucide="x"></i>
             </button>
         </div>
         <div class="modal-body">
             <form action="">
+                <input type="hidden" name="taskUser" value="<?php echo $username ?>" id="taskUser">
                 <div class="input-cont">
                     <label for="taskTitle">Title</label>
                     <input type="text" name="taskTitle" id="taskTitle">
