@@ -150,9 +150,44 @@ main .griding-box .tasks-cont {
     gap: 10px;
 }
 
+/* task body loader  */
+
+#taskBodyLoader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#taskBodyLoader .loader {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    clip-path: polygon(100% 0, 100% 100%, 0% 100%, 50% 50%, 0% 0%);
+    border: 4px solid rgb(88, 88, 88);
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        rotate: 0;
+    }
+
+    100% {
+        rotate: 360deg;
+    }
+}
+
 .tasks-cont .body .task-card {
     background-color: goldenrod;
     border-radius: 10px;
+}
+
+.tasks-cont .body .task-card.pending {
+    background-color: red;
+}
+
+.tasks-cont .body .task-card.inprocess {
+    background-color: rgb(100, 100, 251);
 }
 
 .tasks-cont .body .task-card .upper {
@@ -179,6 +214,12 @@ main .griding-box .tasks-cont {
     border-radius: 50%;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+    transform: rotate(0);
+    transition: all 0.3s ease;
+}
+
+.tasks-cont .body .task-card.active .upper button {
+    transform: rotate(180deg);
 }
 
 .tasks-cont .body .task-card.active .upper {
@@ -188,6 +229,7 @@ main .griding-box .tasks-cont {
 .tasks-cont .body .task-card .lower {
     height: 0;
     overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .tasks-cont .body .task-card.active .lower {

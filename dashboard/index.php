@@ -90,61 +90,12 @@ $fullname = $row['fullname'];
                             <i data-lucide="plus"></i>
                         </button>
                     </div>
-                    <div class="body">
-                        <div class="task-card active">
-                            <div class="upper">
-                                <span class="heading">Done Home Work.</span>
-                                <button type="button" onclick="">
-                                    <i data-lucide="chevron-down"></i>
-                                </button>
-                            </div>
-                            <div class="lower">
-                                <p class="desc">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem molestiae eaque esse!
-                                </p>
-                                <div class="btn-cont">
-                                    <button type="button">Delete</button>
-                                    <button type="button">Done</button>
-                                    <button type="button">In Process</button>
-                                </div>
-                            </div>
+                    <input type="hidden" name="taskLoaderUser" id="taskLoaderUser" value="<?php echo $username ?>">
+                    <div class="body" id="tasksContBody">
+                        <div id="taskBodyLoader">
+                            <div class="loader"></div>
                         </div>
-                        <div class="task-card ">
-                            <div class="upper">
-                                <span class="heading">Done Home Work.</span>
-                                <button type="button" onclick="">
-                                    <i data-lucide="chevron-down"></i>
-                                </button>
-                            </div>
-                            <div class="lower">
-                                <p class="desc">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem molestiae eaque esse!
-                                </p>
-                                <div class="btn-cont">
-                                    <button type="button">Delete</button>
-                                    <button type="button">Done</button>
-                                    <button type="button">In Process</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="task-card ">
-                            <div class="upper">
-                                <span class="heading">Done Home Work.</span>
-                                <button type="button" onclick="">
-                                    <i data-lucide="chevron-down"></i>
-                                </button>
-                            </div>
-                            <div class="lower">
-                                <p class="desc">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem molestiae eaque esse!
-                                </p>
-                                <div class="btn-cont">
-                                    <button type="button">Delete</button>
-                                    <button type="button">Done</button>
-                                    <button type="button">In Process</button>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

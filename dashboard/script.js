@@ -59,3 +59,101 @@ new Chart(lineChart, {
         }
     }
 });
+
+
+// tasks toggle
+function loadTasks() {
+    const taskBodyLoader = document.getElementById("taskBodyLoader");
+    const tasksContBody = document.getElementById("tasksContBody");
+    const username = $("#taskLoaderUser").val();
+    $.ajax({
+        url: "b_get_tasks.php",
+        type: "Post",
+        data: { username: username },
+        dataType: "json",
+        success: function (data) {
+            if (data.length > 0) {
+                let html = "";
+
+                data.forEach(task => {
+                    html += `
+                        <div class="task-card ${task.status}" id="${task.id}">
+                            <div class="upper">
+                                <span class="heading">${task.taskTitle}</span>
+                                <button type="button" onclick="toggleTask(${task.id})">
+                                    <i data-lucide="chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="lower">
+                                <p class="desc">${task.taskDesc}</p>
+                                <div class="btn-cont">
+                                <button type="button" onclick="deleteTask(${task.id})">Delete</button>
+                                    <button type="button">Done</button>
+                                    <button type="button"  onclick="setInProcess(${task.id})">In Process</button>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                });
+                tasksContBody.innerHTML = "";
+                tasksContBody.innerHTML = html;
+                taskBodyLoader.style.display = "none";
+            } else {
+                tasksContBody.innerHTML = "";
+                let html = "<p>No task founded</p>";
+                tasksContBody.innerHTML = html;
+                taskBodyLoader.style.display = "none";
+            }
+            lucide.createIcons();
+        }
+    })
+}
+
+loadTasks();
+
+
+// expangding 
+function toggleTask(id) {
+    const taskCard = document.getElementById(id);
+    taskCard.classList.toggle("active");
+}
+
+function deleteTask(id) {
+    Swal.fire({
+        title: "Alert",
+        text: "This will not be recovered",
+        icon: "info",
+        showCancelButton: true,
+        cancelButtonColor: "#3b82f6",
+        confirmButtonColor: "#ee3434ff",
+        confirmButtonText: "Yes! Delete"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "b_delete_task.php",
+                type: "Post",
+                data: { id: id },
+                dataType: "json",
+                success: function (response) {
+                    if (response.success) {
+                        Swal.fire({
+                            title: "Deleted",
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1000
+                        });
+                    } else {
+                        Swla.fire({
+                            title: "Error",
+                            text: "Failed to delete task",
+                            icon: 'error',
+                            confirmButtonText: "Try Again"
+                        }).then(() => {
+                            location.realod();
+                        })
+                    }
+                }
+            })
+        }
+    })
+}
