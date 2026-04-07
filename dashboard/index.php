@@ -98,7 +98,6 @@ $fullname = $row['fullname'];
                         <div id="taskBodyLoader">
                             <div class="loader"></div>
                         </div>
-
                     </div>
                 </div>
             </div>

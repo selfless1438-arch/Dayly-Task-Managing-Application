@@ -1,30 +1,52 @@
-const ctx = document.getElementById("pieChart");
+function chartsData() {
+    const username = document.getElementById("taskLoaderUser").value;
+    $.ajax({
+        url: "b_chartsData.php",
+        type: "POST",
+        data: { username: username },
+        dataType: "json",
+        success: function (data) {
+            const objlength = Object.keys(data).length;
+            if (objlength > 0) {
 
-new Chart(ctx, {
-    type: 'pie',
-    data: {
-        labels: ['Completed', 'Pending', 'In Process'],
-        datasets: [{
-            label: "Tasks",
-            data: [12, 10, 2],
-            backgroundColor: [
-                '#22c55e',
-                '#f59e0b',
-                '#3b82f6'
-            ],
-            boderWidth: 0
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'bottom'
+                const ctx = document.getElementById("pieChart");
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Completed', 'Pending', 'In Process'],
+                        datasets: [{
+                            label: "Tasks",
+                            data: [
+                                data.completed,
+                                data.pending,
+                                data.inprocess
+                            ],
+                            backgroundColor: [
+                                '#22c55e',
+                                '#f59e0b',
+                                '#3b82f6'
+                            ],
+                            boderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+
+            } else {
+                // I will get here
             }
         }
-    }
-});
+    });
+}
 
+chartsData();
 // line chart
 
 const lineChart = document.getElementById("lineChart");
