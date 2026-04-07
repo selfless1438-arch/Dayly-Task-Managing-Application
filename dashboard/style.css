@@ -9,6 +9,21 @@ main {
     margin: auto;
 }
 
+/* Gifts container */
+
+.gifs-cont {
+    pointer-events: none;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 100000000000000;
+}
+
+
 /* title card */
 main .title-card {
     background-color: #fff;

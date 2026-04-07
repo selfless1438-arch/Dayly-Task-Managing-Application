@@ -12,4 +12,5 @@ if ($sql->execute()) {
 } else {
     echo json_encode(['success' => false]);
 }
+
 exit;

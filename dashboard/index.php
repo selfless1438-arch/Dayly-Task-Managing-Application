@@ -50,6 +50,9 @@ $fullname = $row['fullname'];
 </head>
 
 <body>
+    <div class="gifs-cont" id="congGift">
+        <img src="ascents/popup.gif" alt="">
+    </div>
     <main>
         <div class="title-card">
             <h1>👋 <?php echo $fullname ?>, Welcome Back</h1>
@@ -95,7 +98,7 @@ $fullname = $row['fullname'];
                         <div id="taskBodyLoader">
                             <div class="loader"></div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

@@ -3,15 +3,15 @@ include "db.php";
 header("Content-Type: application/json");
 
 $username = $_POST['username'];
-
-$sql = $conn->prepare("SELECT * FROM tasks WHERE username = ?");
-$sql->bind_param("s", $username);
+$notStatus = "completed";
+$sql = $conn->prepare("SELECT * FROM tasks WHERE username = ? AND status != ?");
+$sql->bind_param("ss", $username, $notStatus);
 $sql->execute();
 
 $result = $sql->get_result();
 
+$data = [];
 if ($result->num_rows > 0) {
-    $data = [];
     while ($row = $result->fetch_assoc()) {
         $data[] = $row;
     }
