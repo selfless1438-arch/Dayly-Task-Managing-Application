@@ -11,7 +11,7 @@ function chartsData() {
 
                 const ctx = document.getElementById("pieChart");
                 new Chart(ctx, {
-                    type: 'pie',
+                    type: 'doughnut',
                     data: {
                         labels: ['Completed', 'Pending', 'In Process'],
                         datasets: [{
