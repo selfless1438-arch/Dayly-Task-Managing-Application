@@ -74,26 +74,46 @@ function loadTasks() {
         success: function (data) {
             if (data.length > 0) {
                 let html = "";
-
                 data.forEach(task => {
-                    html += `
-                        <div class="task-card ${task.status}" id="${task.id}">
-                            <div class="upper">
-                                <span class="heading">${task.taskTitle}</span>
-                                <button type="button" onclick="toggleTask(${task.id})">
-                                    <i data-lucide="chevron-down"></i>
-                                </button>
-                            </div>
-                            <div class="lower">
-                                <p class="desc">${task.taskDesc}</p>
-                                <div class="btn-cont">
-                                <button type="button" onclick="deleteTask(${task.id})">Delete</button>
-                                    <button type="button">Done</button>
-                                    <button type="button"  onclick="setInProcess(${task.id})">In Process</button>
+                    if (task.status === "inprocess") {
+                        html += `
+                            <div class="task-card ${task.status}" id="${task.id}">
+                                <div class="upper">
+                                    <span class="heading">${task.taskTitle}</span>
+                                    <button type="button" onclick="toggleTask(${task.id})">
+                                        <i data-lucide="chevron-down"></i>
+                                    </button>
+                                </div>
+                                <div class="lower">
+                                    <p class="desc">${task.taskDesc}</p>
+                                    <div class="btn-cont">
+                                        <button type="button" onclick="deleteTask(${task.id})">Delete</button>
+                                        <button type="button" onclick="doneTask(${task.id})">Done</button>
+                                        <button type="button" class ="disabled"  onclick="setInProcess(${task.id})">In Process</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    `
+                        `
+                    } else {
+                        html += `
+                            <div class="task-card ${task.status}" id="${task.id}">
+                                <div class="upper">
+                                    <span class="heading">${task.taskTitle}</span>
+                                    <button type="button" onclick="toggleTask(${task.id})">
+                                        <i data-lucide="chevron-down"></i>
+                                    </button>
+                                </div>
+                                <div class="lower">
+                                    <p class="desc">${task.taskDesc}</p>
+                                    <div class="btn-cont">
+                                    <button type="button" onclick="deleteTask(${task.id})">Delete</button>
+                                        <button type="button">Done</button>
+                                        <button type="button"  onclick="setInProcess(${task.id})">In Process</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    }
                 });
                 tasksContBody.innerHTML = "";
                 tasksContBody.innerHTML = html;
@@ -153,6 +173,56 @@ function deleteTask(id) {
                         })
                     }
                 }
+            })
+        }
+    })
+}
+
+
+function setInProcess(id) {
+    $.ajax({
+        url: "b_inProcess_task.php",
+        type: "Post",
+        data: { id: id },
+        dataType: "json",
+        success: function (response) {
+            if (response.success) {
+                Swal.fire({
+                    title: "Success",
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1000
+                }).then(() => {
+                    location.realod();
+                });
+            } else {
+                Swla.fire({
+                    title: "Error",
+                    text: "Someting went wrong!",
+                    icon: 'error',
+                    confirmButtonText: "Try Again"
+                }).then(() => {
+                    location.realod();
+                })
+            }
+        }
+    })
+}
+
+
+function doneTask(id) {
+    Swal.fire({
+        title: "Info",
+        text: "Do you have realy done it?",
+        icon: "success",
+        confirmButtonText: "Yes",
+        showCancelButton: true,
+        cancelButtonText: "No"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "b_done_task.php",
+                
             })
         }
     })
