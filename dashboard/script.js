@@ -1,13 +1,13 @@
 const username = document.getElementById("taskLoaderUser").value;
-function historyDates() {
-    $.ajax({
-        url: "b_history_dates.php",
-        
-    })
-}
+// function historyDates() {
+//     $.ajax({
+//         url: "b_history_dates.php",
+
+//     })
+// }
 
 
-function chartsData() {
+function piechartsData() {
     $.ajax({
         url: "b_chartsData.php",
         type: "POST",
@@ -54,42 +54,71 @@ function chartsData() {
     });
 }
 
-chartsData();
+piechartsData();
 // line chart
 
-const lineChart = document.getElementById("lineChart");
+function lineChartData() {
+    $.ajax({
+        url: "b_lineChart_data.php",
+        type: "POST",
+        data: { username: username },
+        dataType: "json",
+        success: function (data) {
 
-new Chart(lineChart, {
-    type: 'line',
-    data: {
-        labels: ['01/04', '02/04', '03/04', '04/04', '05/04', '06/04', '07/04', '07/04', '08/04', '09/04', '10/04'],
-        datasets: [{
-            label: "Last 10 Days",
-            data: [57, 23, 53, 23, 65, 23, 56, 23, 34, 12, 89],
-            borderColor: '#3b82f6',
-            backgroundColor: 'rgba(59,130,246,0.2)',
-            tension: 0.4,
-            fill: true,
-            pointRadius: 5,
-            pointBackgroundColor: '#3b82f6'
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'bottom'
+            const objlength = Object.keys(data).length;
+            if (objlength > 0) {
+                const lineChart = document.getElementById("lineChart");
+                new Chart(lineChart, {
+                    type: 'line',
+                    data: {
+                        labels: ['01/04', '02/04', '03/04', '04/04', '05/04', '06/04', '07/04', '08/04', '09/04', '10/04'],
+                        datasets: [
+                            {
+                                label: "Completed",
+                                data: [data.completed.com_01, data.completed.com_02, data.completed.com_03, data.completed.com_04, data.completed.com_05, data.completed.com_06, data.completed.com_07, data.completed.com_08, data.completed.com_09, data.completed.com_10,],
+                                borderColor: '#f6803bff',
+                                backgroundColor: 'rgba(59,130,246,0.2)',
+                                tension: 0.4,
+                                fill: true,
+                                pointBackgroundColor: '#3b82f6'
+                            },
+                            {
+                                label: "pending",
+                                data: [data.pending.pen_01, data.pending.pen_02, data.pending.pen_03, data.pending.pen_04, data.pending.pen_05, data.pending.pen_06, data.pending.pen_07, data.pending.pen_08, data.pending.pen_09, data.pending.pen_10,],
+                                borderColor: '#3b82f6',
+                                backgroundColor: 'rgba(59,130,246,0.2)',
+                                tension: 0.4,
+                                fill: true,
+                                pointBackgroundColor: '#f63b6dff'
+                            },
+                            {
+                                label: "Inprocess",
+                                data: [data.inprocess.pro_01, data.inprocess.pro_02, data.inprocess.pro_03, data.inprocess.pro_04, data.inprocess.pro_05, data.inprocess.pro_06, data.inprocess.pro_07, data.inprocess.pro_08, data.inprocess.pro_09, data.inprocess.pro_10,],
+                                borderColor: '#3b82f6',
+                                backgroundColor: 'rgba(246, 187, 59, 0.2)',
+                                tension: 0.4,
+                                fill: true,
+                                pointBackgroundColor: '#f6da3bff'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            },
+                        }
+                    }
+                });
+            } else {
+
             }
-        },
-        scales: {
-            y: {
-                beginAtZero: true,
-                max: 100   // 👈 Set Maximum Value Here
-            }
+
         }
-    }
-});
-
+    })
+}
+lineChartData();
 
 // tasks toggle
 function loadTasks() {

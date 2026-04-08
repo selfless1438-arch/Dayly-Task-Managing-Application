@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>3 Line Chart</title>
+    <style>
+        canvas{
+            max-width: 600px;
+            max-height: 300px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <canvas id="myChart" width="400" height="200"></canvas>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [
+                    {
+                        label: 'Completed',
+                        data: [12, 19, 3, 5, 2, 3, 9],
+                        borderColor: 'green',
+                        backgroundColor: 'transparent',
+                        tension: 0.3
+                    },
+                    {
+                        label: 'Pending',
+                        data: [5, 10, 8, 15, 7, 12, 6],
+                        borderColor: 'red',
+                        backgroundColor: 'transparent',
+                        tension: 0.3
+                    },
+                    {
+                        label: 'In Process',
+                        data: [8, 7, 10, 6, 12, 9, 11],
+                        borderColor: 'blue',
+                        backgroundColor: 'transparent',
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
