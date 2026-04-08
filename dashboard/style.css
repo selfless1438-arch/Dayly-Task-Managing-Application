@@ -90,6 +90,7 @@ main .griding-box .stats-cont .previous-history {
 }
 
 main .griding-box .stats-cont .previous-history .history-card {
+    position: relative;
     max-height: 100vh;
     height: 100%;
     background-color: #fff;
@@ -101,6 +102,18 @@ main .griding-box .stats-cont .previous-history .history-card {
     flex-direction: column;
 }
 
+main .griding-box .stats-cont .previous-history .history-card .cover {
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 30px;
+    border-radius: 20px;
+    text-align: center;
+}
 
 main .griding-box .stats-cont .previous-history .history-card .per {
     font-size: 48px;
@@ -108,10 +121,31 @@ main .griding-box .stats-cont .previous-history .history-card .per {
     font-weight: 700;
 }
 
+main .griding-box .stats-cont .previous-history .history-card .desc {
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
 main .griding-box .stats-cont .previous-history .history-card .tagline {
     font-size: 16px;
     font-family: var(--font-text);
     color: rgb(146, 146, 146);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+main .griding-box .stats-cont .previous-history .history-card .tagline p span {
+    display: inline-block;
+    width: 10px;
+    border-radius: 50%;
+    height: 10px;
+    background-color: #3b82f6;
+}
+
+main .griding-box .stats-cont .previous-history .history-card .tagline .com span {
+    background-color: #22c55e;
 }
 
 main .griding-box .stats-cont .stat-chart {
@@ -198,11 +232,11 @@ main .griding-box .tasks-cont {
 }
 
 .tasks-cont .body .task-card.pending {
-    background-color: red;
+    background-color: #3b82f6;
 }
 
 .tasks-cont .body .task-card.inprocess {
-    background-color: rgb(100, 100, 251);
+    background-color: #f59e0b;
 }
 
 .tasks-cont .body .task-card .upper {
@@ -216,11 +250,18 @@ main .griding-box .tasks-cont {
     font-weight: 500;
     font-size: 20px;
     font-family: var(--font-text);
+}
 
+.tasks-cont .body .task-card.inprocess .upper .heading {
+    color: #0060fc;
+}
+
+.tasks-cont .body .task-card.pending .upper .heading {
+    color: #ffc868;
 }
 
 .tasks-cont .body .task-card .upper button {
-    background-color: tan;
+    background-color: #22c55e;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -237,8 +278,12 @@ main .griding-box .tasks-cont {
     transform: rotate(180deg);
 }
 
+.tasks-cont .body .task-card .upper button svg {
+    color: #0060fc;
+}
+
 .tasks-cont .body .task-card.active .upper {
-    border-bottom: 1px solid green;
+    border-bottom: 1px solid white;
 }
 
 .tasks-cont .body .task-card .lower {

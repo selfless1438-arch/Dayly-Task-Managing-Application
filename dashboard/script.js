@@ -1,5 +1,13 @@
+const username = document.getElementById("taskLoaderUser").value;
+function historyDates() {
+    $.ajax({
+        url: "b_history_dates.php",
+        
+    })
+}
+
+
 function chartsData() {
-    const username = document.getElementById("taskLoaderUser").value;
     $.ajax({
         url: "b_chartsData.php",
         type: "POST",

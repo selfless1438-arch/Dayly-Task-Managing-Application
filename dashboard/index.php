@@ -59,30 +59,76 @@ $fullname = $row['fullname'];
             <button class="logout-btn" type="button" onclick="window.location = 'logout.php'"> <i data-lucide="log-out"></i> Log Out</button>
         </div>
         <div class="griding-box">
-            <div class="stats-cont">
-                <div class="pie-chart">
-                    <canvas id="pieChart"></canvas>
-                </div>
-                <div class="previous-history">
-                    <div class="history-card">
-                        <span class="per">56%</span>
-                        <p class="tagline">Yesterday</p>
+            <div>
+                <div class="stats-cont">
+                    <div class="pie-chart">
+                        <canvas id="pieChart"></canvas>
                     </div>
-                    <div class="history-card">
-                        <span class="per">60%</span>
-                        <p class="tagline">Last Week</p>
+                    <div class="previous-history">
+                        <div class="history-card" id="HLDay">
+                            <div class="cover">
+                                These stats will un covered after 1 Day.
+                            </div>
+                            <span class="per">56%</span>
+                            <p class="desc">Yesterday</p>
+                            <div class="tagline">
+                                <p class="total">
+                                    <span></span> Toltal: 12
+                                </p>
+                                <p class="com">
+                                    <span></span> Completed: 10
+                                </p>
+                            </div>
+                        </div>
+                        <div class="history-card" id="hLWeek">
+                            <div class="cover">
+                                These stats will un covered after 07 Days. 
+                            </div>
+                            <span class="per">60%</span>
+                            <p class="desc">Last Week</p>
+                            <div class="tagline">
+                                <p class="total">
+                                    <span></span> Toltal: 12
+                                </p>
+                                <p class="com">
+                                    <span></span> Completed: 10
+                                </p>
+                            </div>
+                        </div>
+                        <div class="history-card" id="HLDecade">
+                            <div class="cover">
+                                These stats will un covered after 10 Days. 
+                            </div>
+                            <span class="per">45%</span>
+                            <p class="desc">Last 10 Days</p>
+                            <div class="tagline">
+                                <p class="total">
+                                    <span></span> Toltal: 12
+                                </p>
+                                <p class="com">
+                                    <span></span> Completed: 10
+                                </p>
+                            </div>
+                        </div>
+                        <div class="history-card" id="HLHMonth">
+                            <div class="cover">
+                                These stats will un covered after 15 Days. 
+                            </div>
+                            <span class="per">61%</span>
+                            <p class="desc">Last 15 Days</p>
+                            <div class="tagline">
+                                <p class="total">
+                                    <span></span> Toltal: 12
+                                </p>
+                                <p class="com">
+                                    <span></span> Completed: 10
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="history-card">
-                        <span class="per">45%</span>
-                        <p class="tagline">Last 10 Days</p>
+                    <div class="stat-chart">
+                        <canvas id="lineChart"></canvas>
                     </div>
-                    <div class="history-card">
-                        <span class="per">61%</span>
-                        <p class="tagline">Last 15 Days</p>
-                    </div>
-                </div>
-                <div class="stat-chart">
-                    <canvas id="lineChart"></canvas>
                 </div>
             </div>
             <div class="tasks-grid">
