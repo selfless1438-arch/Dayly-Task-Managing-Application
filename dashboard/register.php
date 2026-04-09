@@ -23,12 +23,16 @@ if ($result->num_rows > 0) {
     );
     exit;
 }
+
 $sql = $conn->prepare("INSERT INTO users (username, fullname, email, question, answer, password) VALUES (?,?,?,?,?,?)");
 $sql->bind_param("ssssss", $username, $fullname, $email, $question, $answer, $hash_password);
 if ($sql->execute()) {
+    $stmt = $conn->prepare("INSERT INTO other_user_details (username) VALUES (?)");
+    $stmt->bind->param("s", $username);
+    $stmt->execute();
     echo json_encode(["success" => true, "message" => "Congratulation your registration is approved"]);
     exit;
 } else {
-    echo json_encode(["success" => false , "message" => "Something went wrong at server"]);
+    echo json_encode(["success" => false, "message" => "Something went wrong at server"]);
     exit;
 }

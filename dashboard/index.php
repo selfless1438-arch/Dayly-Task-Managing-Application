@@ -43,6 +43,7 @@ $fullname = $row['fullname'];
     <title>Dashboard | Dayly - Task Manager</title>
     <link rel="stylesheet" href="../root.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="modals.css">
     <?php
     include "../links.php";
@@ -150,40 +151,8 @@ $fullname = $row['fullname'];
         </div>
     </main>
 
-    <footer>
-        <ul>
-            <li>
-                <a href="">
-                    <i data-lucide="house"></i>
-                    <span class="name">Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <i data-lucide="clipboard-list"></i>
-                    <span class="name">Tasks</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <i data-lucide="chart-pie"></i>
-                    <span class="name">Stats</span>
-                </a>
-            </li>
-            <li>
-                <a href="">
-                    <img src="https://avatars.githubusercontent.com/u/249313678?v=4" width="40px" alt="profile">
-                    <span class="name">Profile</span>
-                </a>
-            </li>
-            <li>
-                <a href="logout.php">
-                    <i data-lucide="log-out"></i>
-                    <span class="name">Logout</span>
-                </a>
-            </li>
-        </ul>
-    </footer>
+    <?php include "footer.php" ?>
+    
     <!-- Modals -->
     <?php include "modals.php" ?>
 
