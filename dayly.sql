@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2026 at 10:45 AM
+-- Generation Time: Apr 09, 2026 at 07:24 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `dayly`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `other_user_details`
+--
+
+CREATE TABLE `other_user_details` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `date_birth` varchar(255) NOT NULL,
+  `contact` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `gender` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `other_user_details`
+--
+
+INSERT INTO `other_user_details` (`id`, `username`, `date_birth`, `contact`, `address`, `gender`) VALUES
+(1, 'danishameer', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -118,6 +140,7 @@ CREATE TABLE `users` (
   `username` varchar(100) NOT NULL,
   `fullname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `profile_img` varchar(255) NOT NULL,
   `question` varchar(255) NOT NULL,
   `answer` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -128,12 +151,19 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `fullname`, `email`, `question`, `answer`, `password`, `created_at`) VALUES
-(17, 'danishameer', 'Danish Ameer', 'dani@mail.com', 'What\'s your mother name?', 'Nasreen', '$2y$10$R71kjk0IN3ZsWaCyovZYGenEa6rutS4Pv6XQ4YVj7fPHDoiTL9rc2', '2026-04-03 17:28:17');
+INSERT INTO `users` (`id`, `username`, `fullname`, `email`, `profile_img`, `question`, `answer`, `password`, `created_at`) VALUES
+(17, 'danishameer', 'Danish Ameer', 'dani@mail.com', '', 'What\'s your mother name?', 'Nasreen', '$2y$10$R71kjk0IN3ZsWaCyovZYGenEa6rutS4Pv6XQ4YVj7fPHDoiTL9rc2', '2026-04-03 17:28:17');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `other_user_details`
+--
+ALTER TABLE `other_user_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_fk_usernam` (`username`);
 
 --
 -- Indexes for table `tasks`
@@ -154,6 +184,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `other_user_details`
+--
+ALTER TABLE `other_user_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
@@ -168,6 +204,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `other_user_details`
+--
+ALTER TABLE `other_user_details`
+  ADD CONSTRAINT `user_fk_usernam` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
 
 --
 -- Constraints for table `tasks`
