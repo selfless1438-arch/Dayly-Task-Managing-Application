@@ -40,6 +40,9 @@ main {
 
 .profile-card .card-header .img-profile {
     background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 150px;
     height: 150px;
     overflow: hidden;
@@ -85,7 +88,6 @@ main {
 }
 
 .profile-card .card-header .img-profile img {
-    background-color: blue;
     object-fit: cover;
     height: 100%;
     width: 100%;
@@ -244,6 +246,10 @@ main {
     flex-direction: column;
 }
 
+.profile-card.editing .card-body .info-cont .o-info .textare-cont {
+    pointer-events: auto;
+}
+
 .profile-card .card-body .info-cont .o-info .textare-cont textarea {
     padding: 5px 10px 5px 30px;
     background-color: transparent;
@@ -255,6 +261,7 @@ main {
     min-height: 3lh;
     max-height: 10lh;
 }
+
 .profile-card.editing .card-body .info-cont .o-info .textare-cont textarea {
-    outline:  2px solid grey;
+    outline: 2px solid grey;
 }

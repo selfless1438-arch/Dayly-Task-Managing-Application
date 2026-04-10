@@ -1,61 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>3 Line Chart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Preview</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <style>
-        canvas{
-            max-width: 600px;
-            max-height: 300px;
+        #preview {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ddd;
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
 
-    <canvas id="myChart" width="400" height="200"></canvas>
+    <h3>Select Profile Image</h3>
+
+    <input type="file" id="profileInput" accept="image/*">
+    <br><br>
+
+    <img id="preview" src="">
 
     <script>
-        const ctx = document.getElementById('myChart');
 
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                datasets: [
-                    {
-                        label: 'Completed',
-                        data: [12, 19, 3, 5, 2, 3, 9],
-                        borderColor: 'green',
-                        backgroundColor: 'transparent',
-                        tension: 0.3
-                    },
-                    {
-                        label: 'Pending',
-                        data: [5, 10, 8, 15, 7, 12, 6],
-                        borderColor: 'red',
-                        backgroundColor: 'transparent',
-                        tension: 0.3
-                    },
-                    {
-                        label: 'In Process',
-                        data: [8, 7, 10, 6, 12, 9, 11],
-                        borderColor: 'blue',
-                        backgroundColor: 'transparent',
-                        tension: 0.3
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top'
-                    }
-                }
+        $("#profileInput").on("change", function () {
+
+            let file = this.files[0];
+
+            if (file) {
+                $("#preview").attr("src", URL.createObjectURL(file));
             }
+
         });
+
     </script>
 
 </body>

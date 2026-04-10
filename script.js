@@ -1,1 +1,1 @@
-lucie.createIcons();
+luciede.createIcons();
