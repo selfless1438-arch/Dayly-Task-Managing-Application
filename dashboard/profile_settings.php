@@ -58,7 +58,7 @@ $fullname = $row['fullname'];
                 </div>
                 <div class="profile-img-cont">
                     <div class="upload-img">
-                        <input type="file" name="newProfileImg" id="newProfileImg">
+                        <input readonly type="file" name="newProfileImg" id="newProfileImg">
                         <i data-lucide="camera"></i>
                     </div>
                     <div class="img-profile">
@@ -69,12 +69,12 @@ $fullname = $row['fullname'];
             <div class="card-body">
                 <div class="title-sec">
                     <div class="name">
-                        <input type="text" name="p_full_name" id="p_full_name" value="Danish Ameer" read>
+                        <input readonly type="text" name="p_full_name" id="p_full_name" value="Danish Ameer" read>
                         <button type="button">User</button>
                     </div>
                     <div class="btn-cont">
-                        <button type="button" id="editBtn">Edit Profile</button>
-                        <button type="button" id="cancelChanges">Cancel</button>
+                        <button type="button" onclick="editProfile()" id="editBtn">Edit Profile</button>
+                        <button type="button" onclick="cancelChanges()" id="cancelChanges">Cancel</button>
                         <button type="button" id="saveChangesBtn">Save Changes</button>
                     </div>
                 </div>
@@ -83,15 +83,15 @@ $fullname = $row['fullname'];
                         <div class="m-info">
                             <div class="input-cont">
                                 <label for="p_username"><i data-lucide="user"></i>Username</label>
-                                <input type="text" name="p_username" value="danishameer" id="p_username">
+                                <input disabled type="text" name="p_username" value="danishameer" id="p_username">
                             </div>
                             <div class="input-cont">
                                 <label for="p_email"><i data-lucide="mail"></i>Email Address</label>
-                                <input type="text" name="p_email" value="selfless1438@gmail.com" id="p_email">
+                                <input disabled type="text" name="p_email" value="selfless1438@gmail.com" id="p_email">
                             </div>
                             <div class="input-cont">
                                 <label for="p_contact"><i data-lucide="phone"></i>Contact</label>
-                                <input type="text" name="p_contact" value="+92-3785799" id="p_contact">
+                                <input readonly type="text" name="p_contact" value="+92-3785799" id="p_contact">
                             </div>
                         </div>
                     </div>
@@ -99,15 +99,15 @@ $fullname = $row['fullname'];
                         <div class="o-info">
                             <div class="input-cont">
                                 <label for="gender"><i data-lucide="fingerprint-pattern"></i>Gender</label>
-                                <input type="text" name="gender" value="your" id="gender">
+                                <input readonly type="text" name="gender" value="your" id="gender">
                             </div>
                             <div class="input-cont">
                                 <label for="birth"><i data-lucide="calendar"></i>Birth Date</label>
-                                <input type="date" name="birth" value="your" id="birth">
+                                <input readonly type="date" name="birth" value="your" id="birth">
                             </div>
                             <div class="textare-cont">
                                 <label for="address"><i data-lucide="map-pin-house"></i>Address</label>
-                                <textarea name="address" value="lorem" id="address">sdlfjslorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo dolor molestiae quae inventore? Sunt nihil explicabo facere eos ipsa aliquid sed dolorem sequi, fugit, ea at, autem perferendis officia a.</textarea>
+                                <textarea readonly name="address" value="lorem" id="address">sdlfjslorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo dolor molestiae quae inventore? Sunt nihil explicabo facere eos ipsa aliquid sed dolorem sequi, fugit, ea at, autem perferendis officia a.</textarea>
                             </div>
                         </div>
                     </div>
@@ -120,6 +120,7 @@ $fullname = $row['fullname'];
 
     <script src="root.js"></script>
     <script src="script.js"></script>
+    <script src="profile_settings.js"></script>
 </body>
 
 </html>
