@@ -8,7 +8,6 @@ function profileDataFetch() {
         data: { username: username },
         dataType: "json",
         success: function (data) {
-            console.log(data);
             $("#userProfileImg").attr("src", data.profileImg);
             $("#role").html(data.role);
             $("#p_full_name").val(data.fullname);
@@ -24,6 +23,8 @@ profileDataFetch();
 
 function editProfile() {
     profileCard.classList.add("editing");
+    const textare = document.querySelector("#address");
+    textare.removeAttribute("readonly");
     const inputs = document.querySelectorAll("input");
     inputs.forEach(input => {
         input.removeAttribute("readonly");
@@ -42,29 +43,45 @@ function cancelChanges() {
 }
 
 function saveProfileChanges() {
-    const data = {
-        fullname: $("#p_full_name").val(),
-        username: $("#p_username").val(),
-        contact: $("#p_full_name").val(),
-        gender: $("#p_full_name").val(),
-        birth_date: $("#p_full_name").val(),
-        address: $("#p_full_name").val(),
-    }
+
+    var formData = new FormData();
+
+    formData.append("fullname", $("#p_full_name").val());
+    formData.append("username", $("#p_username").val());
+    formData.append("contact", $("#p_contact").val());
+    formData.append("gender", $("#gender").val());
+    formData.append("birth_date", $("#birth").val());
+    formData.append("address", $("#address").val());
+
+    // Image
+    var image = $("#newProfileImg")[0].files[0];
+    formData.append("newProfileImg", image);
 
     $.ajax({
         url: "b_update_profile.php",
         type: "POST",
-        data: data,
+        data: formData,
+        contentType: false,
+        processData: false,
         dataType: 'json',
+
         success: function (response) {
-            Swal.fire({
-                title: "Profile Updated.",
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 1500
-            }).then(() => {
-                location.reload();
-            });
+            if (response.success) {
+                Swal.fire({
+                    title: "Profile Updated.",
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => {
+                    location.reload();
+                });
+            } else {
+                Swal.fire({
+                    title: "Error",
+                    text: "Failed to update",
+                    icon: "error"
+                });
+            }
         }
     });
 }

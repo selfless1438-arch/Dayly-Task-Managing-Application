@@ -58,7 +58,7 @@ $fullname = $row['fullname'];
                 </div>
                 <div class="profile-img-cont">
                     <div class="upload-img">
-                        <input readonly type="file" name="newProfileImg" accept="image/*" id="newProfileImg">
+                        <input type="file" name="newProfileImg" accept="image/*" id="newProfileImg">
                         <i data-lucide="camera"></i>
                     </div>
                     <div class="img-profile">
@@ -75,7 +75,7 @@ $fullname = $row['fullname'];
                     <div class="btn-cont">
                         <button type="button" onclick="editProfile()" id="editBtn">Edit Profile</button>
                         <button type="button" onclick="cancelChanges()" id="cancelChanges">Cancel</button>
-                        <button type="button" id="saveChangesBtn">Save Changes</button>
+                        <button type="button" id="saveChangesBtn" onclick="saveProfileChanges()">Save Changes</button>
                     </div>
                 </div>
                 <div class="info-cont">
@@ -85,7 +85,7 @@ $fullname = $row['fullname'];
                                 <label for="p_username"><i data-lucide="user"></i>Username</label>
                                 <input disabled type="text" name="p_username" value="<?php echo $username; ?>" id="p_username">
                             </div>
-                            <div class="input-cont">
+                            <div class="input-cont">    
                                 <label for="p_email"><i data-lucide="mail"></i>Email Address</label>
                                 <input disabled type="text" name="p_email" value="sample@mail.com" id="p_email">
                             </div>
